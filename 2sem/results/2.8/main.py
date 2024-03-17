@@ -16,30 +16,50 @@ def semitone(old_img_arr):
     return new_img_arr.astype(np.uint8)
 
 
-def adaptive_binarization(image_array, window_size=15, c=10):
-    # Ensure window_size is odd to have a center pixel
-    if window_size % 2 == 0:
-        window_size += 1
+def compute_local_threshold(image, window_size=15, C=10):
+    """
+    Вычисление локального порога для каждого пикселя.
+    """
+    height, width = image.shape
+    padded_image = np.pad(image, pad_width=window_size // 2, mode='edge')
+    threshold_image = np.zeros_like(image)
 
-    height, width = image_array.shape
-    binarized_image = np.zeros_like(image_array)
+    for i in range(height):
+        for j in range(width):
+            local_area = padded_image[i:i + window_size, j:j + window_size]
+            local_mean = np.mean(local_area)
+            threshold_image[i, j] = local_mean - C
 
-    # Pad the image to handle the borders
-    padded_image = np.pad(image_array, window_size // 2, mode='edge')
+    return threshold_image
 
-    # Iterate over the image
-    for y in range(height):
-        for x in range(width):
-            # Extract the local region
-            local_region = padded_image[y:y + window_size, x:x + window_size]
-            # Compute the local threshold (mean - c)
-            local_threshold = np.mean(local_region) - c
 
-            # Apply the threshold
-            if image_array[y, x] > local_threshold:
-                binarized_image[y, x] = 255
-            else:
-                binarized_image[y, x] = 0
+"""
+Алгоритм WAN (Weighted Adaptive Neighborhood) работает следующим образом:
+
+1) Для каждого пикселя изображения вычисляется среднее значение интенсивности в его окрестности. 
+Эта окрестность может быть задана, например, квадратным или круглым окном определенного размера.
+
+2) Вычисляется весовой коэффициент для каждого пикселя в окрестности, 
+который может зависеть от различных факторов, таких как расстояние до центрального пикселя или 
+разность интенсивностей.
+
+3) На основе среднего значения интенсивности и весовых коэффициентов вычисляется адаптивный порог для 
+каждого пикселя. Пиксели, чья интенсивность выше порога, становятся белыми, а те, что ниже - черными.
+"""
+def wan_binarization(image, window_size=15, C=10):
+    """
+    Адаптивная бинаризация изображения методом WAN.
+
+    :param image: Исходное изображение в градациях серого.
+    :param window_size: Размер окна для вычисления адаптивного порога.
+    :param C: Константа, вычитаемая из среднего значения для определения порога.
+    :return: Бинаризованное изображение.
+    """
+    if image.ndim == 3:
+        image = semitone(image).astype(np.uint8)
+
+    threshold_image = compute_local_threshold(image, window_size, C)
+    binarized_image = np.where(image > threshold_image, 255, 0).astype(np.uint8)
 
     return binarized_image
 
@@ -58,7 +78,7 @@ def main():
         gray_img_arr = semitone(img_src_arr)  # Use your `semitone` function here
 
         # Then, apply adaptive binarization
-        binarized_image = adaptive_binarization(gray_img_arr)
+        binarized_image = wan_binarization(gray_img_arr)
 
         # Finally, save the binarized image
         img = Image.fromarray(binarized_image)
