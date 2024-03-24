@@ -1,7 +1,6 @@
 from PIL import Image, ImageChops
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib import image as mpimg
 
 
 def semitone(old_img_arr):
