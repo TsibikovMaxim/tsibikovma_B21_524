@@ -58,22 +58,22 @@ def main():
     img_src = Image.open("input/img.png").convert('RGB')
     img_src_arr = np.array(img_src)
 
-    # 1.1
+    # img1.img1
     src_image_stretched = stretching(img_src_arr, 2)
     img = Image.fromarray(src_image_stretched.astype(np.uint8), 'RGB')
     img.save("output/stretched.png")
 
-    # 1.2
+    # img1.img2
     src_image_reduced = reducing(img_src_arr, 2)
     img = Image.fromarray(src_image_reduced.astype(np.uint8), 'RGB')
     img.save("output/reduced.png")
 
-    # 1.3
+    # img1.img3
     src_image_oversampled_twostep = oversampling_twostep(img_src_arr, 7, 2)
     img = Image.fromarray(src_image_oversampled_twostep.astype(np.uint8), 'RGB')
     img.save("output/oversampled_twostep.png")
 
-    # 1.4
+    # img1.4
     src_image_oversampled = oversampling(img_src_arr, 3.5)
     img = Image.fromarray(src_image_oversampled.astype(np.uint8), 'RGB')
     img.save("output/oversampled.png")

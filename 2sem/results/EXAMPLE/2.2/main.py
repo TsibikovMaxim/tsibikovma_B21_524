@@ -10,7 +10,7 @@ def cheating_otsu(input_path: str, output_path:str) -> None:
     image = cv2.imread(input_path, cv2.IMREAD_GRAYSCALE)
 
     # Применение CLAHE
-    # clahe = cv2.createCLAHE(clipLimit=3, tileGridSize=(20,20))
+    # clahe = cv2.createCLAHE(clipLimit=img3, tileGridSize=(20,20))
     # image = clahe.apply(image)
 
     # Применение глобальной бинаризации с критерием Отсу
