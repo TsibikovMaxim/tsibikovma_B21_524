@@ -177,7 +177,7 @@ def create_profiles(sin_letters):
         img_src_arr[img_src_arr == 0] = 1
         img_src_arr[img_src_arr == 255] = 0
 
-        write_profile(img_src_arr, i, type='y')
+        write_profile(img_src_arr, i)
 
 def create_features(sin_letters):
     with open('output/data.csv', 'w', newline='', encoding='utf-8') as csvfile:

@@ -24,8 +24,8 @@ def main():
     # utils.invert_letters(sin_letters)
 
     # Подсчет признаков
-    # utils.create_profiles(sin_letters)
-    utils.create_features(sin_letters)
+    utils.create_profiles(sin_letters)
+    # utils.create_features(sin_letters)
 
 if __name__ == "__main__":
     main()
