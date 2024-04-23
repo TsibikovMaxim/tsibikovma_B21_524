@@ -1,5 +1,6 @@
 import utils
 
+# Сингальский алфавит
 sin_letters = {
     '0D85', '0D86', '0D87', '0D88', '0D89', '0D8A', '0D8B', '0D8C',
     '0D8D', '0D8E', '0D8F', '0D90', '0D91', '0D92', '0D93', '0D94',
@@ -14,18 +15,18 @@ sin_letters = {
 }
 
 def main():
-    # Генерация букв
-    # utils.generate_letters(sin_letters)
+    # Генерация эталонных изображений символов
+    utils.generate_letters(sin_letters)
 
     # Генерация фразы
-    # utils.generate_phrase()
+    utils.generate_phrase()
 
     # Инвертирование
-    # utils.invert_letters(sin_letters)
+    utils.invert_letters(sin_letters)
 
     # Подсчет признаков
-    utils.create_profiles(sin_letters)
-    # utils.create_features(sin_letters)
+    utils.create_profiles(sin_letters) # Задание 2
+    utils.create_features(sin_letters) # Задание 3
 
 if __name__ == "__main__":
     main()

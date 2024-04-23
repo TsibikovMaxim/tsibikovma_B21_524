@@ -161,12 +161,12 @@ def calculate_features(img):
     rel_iner_y = iner_y/(img_b.shape[0]**2 + img_b.shape[1]**2)
 
     return {
-        'weight': weight,
-        'rel_weight': rel_weight,
-        'center': (x_avg, y_avg),
-        'rel_center': (rel_x_avg, rel_y_avg),
-        'inertia': (iner_x, iner_y),
-        'rel_inertia': (rel_iner_x, rel_iner_y)
+        'weight': weight, # Вес
+        'rel_weight': rel_weight, # Удельный вес
+        'center': (x_avg, y_avg), # Координаты центра тяжести
+        'rel_center': (rel_x_avg, rel_y_avg), # Нормированные координаты центра тяжести
+        'inertia': (iner_x, iner_y), # Нормированные осевые моменты инерции
+        'rel_inertia': (rel_iner_x, rel_iner_y) # Профили X и Y
     }
 
 def create_profiles(sin_letters):
