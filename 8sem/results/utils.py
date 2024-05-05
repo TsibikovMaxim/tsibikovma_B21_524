@@ -43,20 +43,18 @@ def haralic(img):
     return Image.fromarray(matrix), matrix
 
 def features(matrix):
+    # AV (Average Value) и D (Deviation)
     width = matrix.shape[0]
     height = matrix.shape[1]
 
-    con = 0
+    av = np.sum(matrix) / (width * height)
+
+    d = 0
     for i in range(0, height):
         for j in range(0, width):
-            con += (i - j) * (i - j) * matrix[i, j]
+            d += (matrix[i, j] - av) * (matrix[i, j] - av)
 
-    lun = 0
-    for i in range(0, height):
-        for j in range(0, width):
-            lun += matrix[i, j] / (1 + (i - j) * (i - j))
-
-    return con, lun
+    return av, np.sqrt(d / (width * height))
 
 
 def make_contrast(img_gray, gmin=0, gmax=255):
@@ -110,8 +108,8 @@ def features_and_contrast(img_path):
 
     # подсчет свойст
     gray_features = features(matrix_haralic_gray / np.sum(matrix_haralic_gray))
-    print("Свойства grayscale: (con, lun)")
+    print("Свойства grayscale:")
     print(gray_features)
     contrast_features = features(matrix_haralic_contrast / np.sum(matrix_haralic_contrast))
-    print("Свойства контрастного: (con, lun)")
+    print("Свойства контрастного:")
     print(contrast_features)
