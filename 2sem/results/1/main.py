@@ -22,7 +22,7 @@ def main():
 
     src_image = semitone(img_src_arr)
     img = Image.fromarray(src_image, 'L').convert('RGB')
-    img.save("output/semitoned.png")
+    img.save("output.txt/semitoned.png")
 
 
 if __name__ == "__main__":

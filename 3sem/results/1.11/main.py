@@ -102,13 +102,13 @@ def main():
         )
 
         # Сохранение результата
-        output_path = 'output/img'+str(images.index(image)+1)+'/semitoned_image.png'
+        output_path = 'output.txt/img'+str(images.index(image)+1)+'/semitoned_image.png'
         plt.imsave(output_path, src_image, cmap='gray')
 
-        output_path = 'output/img'+str(images.index(image)+1)+'/opened_image.png'
+        output_path = 'output.txt/img'+str(images.index(image)+1)+'/opened_image.png'
         plt.imsave(output_path, opened_image, cmap='gray')
 
-        output_path = 'output/img'+str(images.index(image)+1)+'/diff_image.png'
+        output_path = 'output.txt/img'+str(images.index(image)+1)+'/diff_image.png'
         plt.imsave(output_path, deffered_image, cmap='gray')
 
 if __name__ == "__main__":

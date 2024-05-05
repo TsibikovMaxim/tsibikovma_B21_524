@@ -78,25 +78,25 @@ def main():
         binarized_200_image = binarization(src_image, 200)
 
         # Сохранение результата
-        output_path = 'output/img' + str(images.index(image) + 1) + '/semitoned_image.png'
+        output_path = 'output.txt/img' + str(images.index(image) + 1) + '/semitoned_image.png'
         plt.imsave(output_path, src_image, cmap='gray')
 
-        output_path = 'output/img' + str(images.index(image) + 1) + '/pruitt_x.png'
+        output_path = 'output.txt/img' + str(images.index(image) + 1) + '/pruitt_x.png'
         plt.imsave(output_path, pruitt_x_image, cmap='gray')
 
-        output_path = 'output/img' + str(images.index(image) + 1) + '/pruitt_y.png'
+        output_path = 'output.txt/img' + str(images.index(image) + 1) + '/pruitt_y.png'
         plt.imsave(output_path, pruitt_y_image, cmap='gray')
 
-        output_path = 'output/img' + str(images.index(image) + 1) + '/pruitt.png'
+        output_path = 'output.txt/img' + str(images.index(image) + 1) + '/pruitt.png'
         plt.imsave(output_path, pruitt_image, cmap='gray')
 
-        output_path = 'output/img' + str(images.index(image) + 1) + '/binarized_100.png'
+        output_path = 'output.txt/img' + str(images.index(image) + 1) + '/binarized_100.png'
         plt.imsave(output_path, binarized_100_image, cmap='gray')
 
-        output_path = 'output/img' + str(images.index(image) + 1) + '/binarized_150.png'
+        output_path = 'output.txt/img' + str(images.index(image) + 1) + '/binarized_150.png'
         plt.imsave(output_path, binarized_150_image, cmap='gray')
 
-        output_path = 'output/img' + str(images.index(image) + 1) + '/binarized_200.png'
+        output_path = 'output.txt/img' + str(images.index(image) + 1) + '/binarized_200.png'
         plt.imsave(output_path, binarized_200_image, cmap='gray')
 
 

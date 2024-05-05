@@ -44,7 +44,7 @@ def write_profile(img, type):
 
     plt.xlim(0, 500)
 
-    plt.savefig(f'output/profiles/profiles_{type}.png')
+    plt.savefig(f'output.txt/profiles/profiles_{type}.png')
 
 def create_profiles(type):
     img_src = Image.open(f'input/sentence.png').convert('L')
@@ -227,8 +227,8 @@ def text_selection():
     print((x1, x2), (y1, y2))
 
     plt.bar(x=x1, height=y1, width=0.9)
-    plt.savefig(f'output/selected_sentence_profile1.png')
+    plt.savefig(f'output.txt/selected_sentence_profile1.png')
 
     plt.bar(x=x2, height=y2, width=0.9)
-    plt.savefig(f'output/selected_sentence_profile2.png')
+    plt.savefig(f'output.txt/selected_sentence_profile2.png')
 

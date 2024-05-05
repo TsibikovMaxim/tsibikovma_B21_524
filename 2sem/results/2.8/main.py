@@ -82,7 +82,7 @@ def main():
 
         # Finally, save the binarized image
         img = Image.fromarray(binarized_image)
-        path = "output/semitoned_" + str(i+1) + ".png"
+        path = "output.txt/semitoned_" + str(i+1) + ".png"
         img.save(path)
 
 

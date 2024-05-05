@@ -21,7 +21,7 @@ def cheating_otsu(input_path: str, output_path:str) -> None:
 
 def main():
     current_dir = os.path.dirname(os.path.abspath(__file__))
-    output_path = os.path.join(current_dir, 'output')
+    output_path = os.path.join(current_dir, 'output.txt')
     relative_path = "2sem/results/input/*"
     for input_path in glob(relative_path):
         curr_opath = os.path.join(output_path, os.path.basename(input_path))

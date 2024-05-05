@@ -62,7 +62,7 @@ def generate_letters(sin_letters):
         draw.text((0, 0), letter, (0, 0, 0), font=font)
 
         img = Image.fromarray(_simple_binarization(np.array(img), 75),'L')
-        img.save(f"output/letters/{i+1}.png")
+        img.save(f"output.txt/letters/{i+1}.png")
 
 def generate_phrase():
     font = ImageFont.truetype("input/notosans.ttf", 52)
@@ -76,13 +76,13 @@ def generate_phrase():
     draw.text((0, 0), phrase, (0, 0, 0), font=font)
 
     img = Image.fromarray(_simple_binarization(np.array(img), 75),'L')
-    img.save(f"output/ex10.png")
+    img.save(f"output.txt/ex10.png")
 
 def invert_letters(sin_letters):
     for i, _ in enumerate(sin_letters):
         img = Image.open(f"output/letters/{i+1}.png").convert('L')
         img = invert(img)
-        img.save(f"output/letters/inverse/{i+1}.png")
+        img.save(f"output.txt/letters/inverse/{i+1}.png")
 
 def first_nonzero(arr, axis, invalid_val=-1):
     mask = arr != 0
@@ -123,7 +123,7 @@ def write_profile(img, iter, type='x'):
 
     plt.xlim(0, 55)
 
-    plt.savefig(f'output/letters/profiles/{type}/{iter+1}.png')
+    plt.savefig(f'output.txt/letters/profiles/{type}/{iter+1}.png')
     plt.clf()
 
 def calculate_features(img):
